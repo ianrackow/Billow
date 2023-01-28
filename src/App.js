@@ -1,17 +1,20 @@
+import React from "react";
 import './App.css';
 import OrderDetails from "./components/OrderDetails";
+import Settings from "./components/Settings";
+import { MemoryRouter as Router, Routes, Route } from "react-router-dom";
+import { createMemoryHistory } from "history";
 
 function App() {
+  const history = createMemoryHistory();
   return (
     <div className='App'>
-      <div className='Header'>
-        <div className='Logo'>
-          <img className="LogoIcon" src="/images/logo192.png" />
-          Billow
-        </div>
-        <img className="GearIcon" src="/images/gear-solid.svg" />
-      </div>
-      <OrderDetails />
+      <Router history={history}>
+        <Routes>
+          <Route exact path="/" element={<OrderDetails />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

@@ -1,4 +1,7 @@
+import React from "react";
 import styled from 'styled-components';
+import { useNavigate } from "react-router-dom";
+import NavBar from "./NavBar"
 
 const Container = styled.div`
   display: flex;
@@ -11,7 +14,7 @@ const LineItem = styled.div`
   font-family: 'Avenir';
   font-size: 26px;
   line-height: 40px;
-  margin-top: 15px;
+  margin-top: 26px;
 `
 
 const SourceLogo = styled.img`
@@ -21,7 +24,7 @@ const SourceLogo = styled.img`
 `;
 
 const OffsetButton = styled.div`
-  margin: 30px auto auto auto;
+  margin: 30px auto 55px auto;
   width: 300px;
   height: 60px;
   border-radius: 500px;
@@ -32,25 +35,29 @@ const OffsetButton = styled.div`
 
   cursor: pointer;
   &:hover {
-    box-shadow: 0px 0px 12px 2px rgb(203, 231, 247);
+    box-shadow: 0px 0px 12px 2px #2079ab;
   }
 `;
 
 export default function OrderDetails() {
+  const history = useNavigate();
   return (
-    <Container>
-      <LineItem>
-        <SourceLogo src="/images/doordash.png" />
-        Order from Sweetgreen
-      </LineItem>
-      <LineItem>Miles Traveled</LineItem>
-      <LineItem>
-        <SourceLogo style={{ transform: 'translateY(4px)'}} src="/images/cloud.svg" />
-        Carbon Emissions
-      </LineItem>
-      <OffsetButton>
-        Offset for $2
-      </OffsetButton>
-    </Container>
+    <>
+      <NavBar />
+      <Container>
+        <LineItem>
+          <SourceLogo src="/images/doordash.png" />
+          Order from Sweetgreen
+        </LineItem>
+        <LineItem>Miles Traveled</LineItem>
+        <LineItem>
+          <SourceLogo style={{ transform: 'translateY(4px)'}} src="/images/cloud.svg" />
+          Carbon Emissions
+        </LineItem>
+        <OffsetButton onClick={() => history("/settings")}>
+          Offset for $2
+        </OffsetButton>
+      </Container>
+    </>
   )
 }
