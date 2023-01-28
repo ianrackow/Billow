@@ -40,22 +40,32 @@ var comapnies = {
 var main = function(){
 
   gmail = new Gmail();
-  console.log('Hello,', gmail.get.user_email())
+  console.log('Hello,', gmail.get.user_email());
+
+
+  window.addEventListener('hashchange', function(){
+    console.log("Current page: ", gmail.get.current_page());
+    //console.log("gi");
+    if (gmail.get.current_page() !== "email"){
+      console.log("clearing");
+      chrome.runtime.sendMessage("nmhihkkcifbhmjinkliiocgdnlilnccm", {action: "clear"});
+    }
+  });
 
   gmail.observe.on('view_email', function(obj) {
-    console.log('individual email opened', obj);
+    //console.log('individual email opened', obj);
 
     var id = gmail.new.get.email_id();
 
     var email = new gmail.dom.email(id);
     var data = email.data();
-    console.log(data);
+    //console.log(data);
 
 
     var sender = data.from_email;
     var content  = data.content_html;
     
-    console.log(sender);
+    //console.log(sender);
     var vals = parseUber(content);
 
     console.log(vals);

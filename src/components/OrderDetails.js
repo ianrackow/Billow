@@ -51,6 +51,11 @@ export default function OrderDetails() {
   useEffect(() => {
     // 'sync' can be 'local', depends on your usecase
     chrome.storage.local.get('req', (result) => {
+      if (!result.req){
+        console.log(JSON.stringify(result));
+        history("/summary");
+        return;
+      }
       setX(result.req.data);
 
       // Move this to if they click to offset (so you can't offset the same email receipt twice)
