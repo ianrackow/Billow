@@ -41,6 +41,13 @@ const OffsetButton = styled.div`
   }
 `;
 
+const SpinnerContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(5px);
+`;
+
 export default function OrderDetails() {
 
   const history = useNavigate();
@@ -65,8 +72,19 @@ export default function OrderDetails() {
 
     })
   }, []);
+  /*
   if (!x) {
     return null;
+  }*/
+  
+  const delay = (ms) => new Promise(res => setTimeout(res, ms));
+
+  const donate = async () => {
+    // Wait 3 seconds (this will eventually be a call to the Stripe API)
+    setIsLoading(true);
+    await delay(3000);
+
+    history("/summary")
   }
 
   return (
@@ -85,18 +103,18 @@ export default function OrderDetails() {
           />
           Carbon Emissions: {x.carbon}lbs
         </LineItem>
-        <OffsetButton onClick={() => history("/summary")}>
+        <OffsetButton onClick={donate}>
           {isLoading ? (
-            <ThreeDots
-              height="80"
-              width="80"
-              radius="9"
-              color="#4fa94d"
+            <SpinnerContainer>
+              <ThreeDots
+              height="50"
+              width="50"
+              radius="10"
+              color="#2079ab"
               ariaLabel="three-dots-loading"
-              wrapperStyle={{}}
-              wrapperClassName=""
               visible={true}
             />
+            </SpinnerContainer>
           ) : (
             <>Offset for ${x.money}</>
           )}
