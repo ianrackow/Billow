@@ -86,7 +86,7 @@ export default function OrderDetails() {
 
   const donate = async () => {
     // Wait 3 seconds (this will eventually be a call to the Stripe API)
-    localStorage.setItem("totalEmissions", localStorage.getItem("totalEmissions") + x.money)
+    localStorage.setItem("totalEmissions", float(localStorage.getItem("totalEmissions")) + x.money);
     setIsLoading(true);
     await delay(3000);
 
@@ -98,7 +98,7 @@ export default function OrderDetails() {
       <NavBar />
       <Container>
         <LineItem>
-          <SourceLogo src="/images/doordash.png" />
+          <SourceLogo src="/images/uber.svg" />
           Order from {x.company}
         </LineItem>
         <LineItem>Miles Traveled</LineItem>
