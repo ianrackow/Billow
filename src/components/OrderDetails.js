@@ -1,7 +1,8 @@
-import React from "react";
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import NavBar from "./NavBar"
+import { ThreeDots } from "react-loader-spinner";
+import NavBar from "./NavBar";
 
 const Container = styled.div`
   display: flex;
@@ -11,11 +12,11 @@ const Container = styled.div`
 
 const LineItem = styled.div`
   height: 40px;
-  font-family: 'Avenir';
+  font-family: "Avenir";
   font-size: 26px;
   line-height: 40px;
   margin-top: 26px;
-`
+`;
 
 const SourceLogo = styled.img`
   width: 44px;
@@ -29,7 +30,7 @@ const OffsetButton = styled.div`
   height: 60px;
   border-radius: 500px;
   background-color: rgba(203, 231, 247, 0.4);
-  font-family: 'Bebas Neue', cursive;
+  font-family: "Bebas Neue", cursive;
   font-size: 40px;
   line-height: 60px;
 
@@ -41,6 +42,8 @@ const OffsetButton = styled.div`
 
 export default function OrderDetails() {
   const history = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
     <>
       <NavBar />
@@ -51,13 +54,29 @@ export default function OrderDetails() {
         </LineItem>
         <LineItem>Miles Traveled</LineItem>
         <LineItem>
-          <SourceLogo style={{ transform: 'translateY(4px)'}} src="/images/cloud.svg" />
+          <SourceLogo
+            style={{ transform: "translateY(4px)" }}
+            src="/images/cloud.svg"
+          />
           Carbon Emissions
         </LineItem>
         <OffsetButton onClick={() => history("/summary")}>
-          Offset for $2
+          {isLoading ? (
+            <ThreeDots
+              height="80"
+              width="80"
+              radius="9"
+              color="#4fa94d"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={true}
+            />
+          ) : (
+            <>Offset for $2</>
+          )}
         </OffsetButton>
       </Container>
     </>
-  )
+  );
 }

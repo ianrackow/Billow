@@ -1,6 +1,6 @@
 import React from "react";
-import styled from 'styled-components';
-import NavBar from "./NavBar"
+import styled from "styled-components";
+import NavBar from "./NavBar";
 
 const Container = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ const Container = styled.div`
 `;
 
 const Header = styled.div`
-  font-family: 'Avenir';
+  font-family: "Avenir";
   font-size: 26px;
   margin: 15px 15px 20px 15px;
 `;
@@ -27,10 +27,10 @@ export default function Summary() {
         <NatureSplash src="/images/nature-undraw.svg" />
         <Header>
           You've offset&nbsp;
-          <span style={{ color: '#2079ab', fontWeight: 700 }}>100</span>
+          <span style={{ color: "#2079ab", fontWeight: 700 }}>100</span>
           &nbsp;tons of CO2 on Billow 🥳
         </Header>
       </Container>
     </>
-  )
+  );
 }

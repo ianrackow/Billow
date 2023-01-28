@@ -19,14 +19,8 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": [
-        "jquery-1.10.2.min.js",
-        "gmail.js",
-        "main.js"
-      ],
-      "matches": [
-        "https://mail.google.com/*"
-      ]
+      "resources": ["jquery-1.10.2.min.js", "gmail.js", "main.js"],
+      "matches": ["https://mail.google.com/*"]
     }
   ],
   "manifest_version": 3

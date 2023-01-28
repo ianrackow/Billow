@@ -1,5 +1,5 @@
 import React from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 const Header = styled.div`
@@ -11,7 +11,7 @@ const Header = styled.div`
 `;
 
 const Logo = styled.div`
-  font-family: 'Avenir';
+  font-family: "Avenir";
   font-size: 24px;
   font-weight: 500;
   padding: 6px 0;
@@ -37,8 +37,10 @@ export default function NavBar() {
         <LogoIcon src="/images/logo192.png" />
         Billow
       </Logo>
-      <GearIcon src="/images/gear-solid.svg" onClick={() => history("/settings")}/>
+      <GearIcon
+        src="/images/gear-solid.svg"
+        onClick={() => history("/settings")}
+      />
     </Header>
-  )
-
+  );
 }

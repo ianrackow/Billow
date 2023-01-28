@@ -1,5 +1,5 @@
 import React from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 import NavBar from "./NavBar";
 
 const SettingsContainer = styled.div`
@@ -13,14 +13,14 @@ const Organizations = styled.div`
   border: 2px solid rgba(0, 0, 0, 0.4);
   border-radius: 10px;
   margin: 8px 0;
-`
+`;
 
 const Row = styled.div`
   display: flex;
 `;
 
 const Header = styled.div`
-  font-family: 'Avenir';
+  font-family: "Avenir";
   font-size: 20px;
   font-weight: 500;
   margin-top: 10px;
@@ -42,7 +42,7 @@ const OffsetButton = styled.div`
   height: 40px;
   border-radius: 500px;
   background-color: rgba(203, 231, 247, 0.4);
-  font-family: 'Bebas Neue', cursive;
+  font-family: "Bebas Neue", cursive;
   font-size: 30px;
   line-height: 40px;
 
@@ -68,17 +68,16 @@ export default function Settings() {
             <OrgLogo src="/images/rf-ally.jpeg" />
           </Row>
         </Organizations>
-        <a 
-          href="https://www.vox.com/future-perfect/2019/12/2/20976180/climate-change-best-charities-effective-philanthropy" 
-          target="_blank" 
+        <a
+          href="https://www.vox.com/future-perfect/2019/12/2/20976180/climate-change-best-charities-effective-philanthropy"
+          target="_blank"
           rel="noreferrer"
-          style={{ textDecoration: "none", color: '#2079ab' }}>
+          style={{ textDecoration: "none", color: "#2079ab" }}
+        >
           Methodology
         </a>
-        <OffsetButton>
-          Connect Wallet
-        </OffsetButton>
+        <OffsetButton>Connect Wallet</OffsetButton>
       </SettingsContainer>
     </>
-  )
+  );
 }
