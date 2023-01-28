@@ -1,3 +1,5 @@
+/*global chrome*/
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -37,19 +39,41 @@ const OffsetButton = styled.div`
 `;
 
 export default function OrderDetails() {
+  const [x, setX] = useState();
+  // x is {company: 'Uber', carbon: '1.56', money: '0.78'}
+  useEffect(() => {
+    // 'sync' can be 'local', depends on your usecase
+    chrome.storage.local.get('req', (result) => {
+      setX(result.req.data);
+
+      // Move this to if they click to offset (so you can't offset the same email receipt twice)
+      chrome.storage.local.get({emailIds: []}, function (result) {
+        var emailIds = result.emailIds;
+
+        if (!emailIds.includes(result.req.id)){
+            emailIds.push(result.req.id);
+            chrome.storage.local.set({emailIds: emailIds});
+        }
+    });
+
+    })
+  }, []);
+  if (!x) {
+    return null;
+  }
   return (
     <Container>
       <LineItem>
         <SourceLogo src="/images/doordash.png" />
-        Order from Sweetgreen
+        Trip from {x.company}
       </LineItem>
       <LineItem>Miles Traveled</LineItem>
       <LineItem>
         <SourceLogo style={{ transform: 'translateY(4px)'}} src="/images/cloud.svg" />
-        Carbon Emissions
+        Carbon Emissions: {x.carbon} lbs
       </LineItem>
       <OffsetButton>
-        Offset for $2
+        Offset for ${x.money}
       </OffsetButton>
     </Container>
   )
