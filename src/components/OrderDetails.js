@@ -93,6 +93,8 @@ export default function OrderDetails() {
     history("/summary")
   }
 
+  const url = x.company === "uber" ? "/images/uber.svg" : "/images/southwest.png"
+
   return (
     <>
       <NavBar />
