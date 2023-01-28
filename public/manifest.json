@@ -1,7 +1,16 @@
 {
-  "name": "Gmail.js",
+  "name": "Billow",
   "version": "0.1",
-  "description": "Hello World Gmail chrome extension",
+  "description": "Offset your individual carbon emissions",
+  "icons": {
+    "16": "logo192.png",
+    "48": "logo192.png",
+    "128": "logo192.png"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Open the popup"
+  },
   "content_scripts": [
     {
       "matches": ["https://mail.google.com/*"],
