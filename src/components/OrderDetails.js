@@ -77,10 +77,10 @@ export default function OrderDetails() {
 
     })
   }, []);
-  /*
+  
   if (!x) {
     return null;
-  }*/
+  }
   
   const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
