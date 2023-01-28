@@ -70,7 +70,8 @@ export default function OrderDetails() {
         var emailIds = result.emailIds;
 
         if (!emailIds.includes(result.req.id)){
-            emailIds.push(result.req.id);
+            // Uncomment to make emails exclusive
+            //emailIds.push(result.req.id);
             chrome.storage.local.set({emailIds: emailIds});
         }
     });
@@ -93,15 +94,15 @@ export default function OrderDetails() {
     history("/summary")
   }
 
-  const url = x.company === "uber" ? "/images/uber.svg" : "/images/southwest.png"
+  const logoURL = x.company === "Uber" ? "/images/uber.svg" : "/images/southwest.png"
 
   return (
     <>
       <NavBar />
       <Container>
         <LineItem>
-          <SourceLogo src="/images/uber.svg" />
-          Order from {x.company}
+          <SourceLogo style={{ transform: x.company === "Uber" ? "translateY(-2px)" : "" }}src={logoURL} />
+          Trip with {x.company}
         </LineItem>
         <LineItem>Miles Traveled</LineItem>
         <LineItem>
