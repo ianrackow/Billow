@@ -68,9 +68,15 @@ export default function Settings() {
             <OrgLogo src="/images/rf-ally.jpeg" />
           </Row>
         </Organizations>
-        <a href="google.com" style={{ textDecoration: "none", color: '#2079ab' }}>Methodology</a>
+        <a 
+          href="https://www.vox.com/future-perfect/2019/12/2/20976180/climate-change-best-charities-effective-philanthropy" 
+          target="_blank" 
+          rel="noreferrer"
+          style={{ textDecoration: "none", color: '#2079ab' }}>
+          Methodology
+        </a>
         <OffsetButton>
-          Link Wallet
+          Connect Wallet
         </OffsetButton>
       </SettingsContainer>
     </>

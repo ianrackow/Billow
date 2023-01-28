@@ -33,7 +33,7 @@ export default function NavBar() {
   const history = useNavigate();
   return (
     <Header>
-      <Logo onClick={() => history("/")}>
+      <Logo onClick={() => history("/summary")}>
         <LogoIcon src="/images/logo192.png" />
         Billow
       </Logo>

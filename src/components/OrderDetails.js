@@ -54,7 +54,7 @@ export default function OrderDetails() {
           <SourceLogo style={{ transform: 'translateY(4px)'}} src="/images/cloud.svg" />
           Carbon Emissions
         </LineItem>
-        <OffsetButton onClick={() => history("/settings")}>
+        <OffsetButton onClick={() => history("/summary")}>
           Offset for $2
         </OffsetButton>
       </Container>
