@@ -7,6 +7,7 @@ import Settings from "./components/Settings";
 import Summary from "./components/Summary";
 
 function App() {
+  localStorage.setItem("totalEmissions", 0)
   const history = createMemoryHistory();
   return (
     <div className="App">

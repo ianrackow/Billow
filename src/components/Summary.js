@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import NavBar from "./NavBar";
 
@@ -20,6 +20,8 @@ const NatureSplash = styled.img`
 `;
 
 export default function Summary() {
+  const totalEmissions = localStorage.getItem("totalEmissions");
+
   return (
     <>
       <NavBar />
@@ -27,7 +29,7 @@ export default function Summary() {
         <NatureSplash src="/images/nature-undraw.svg" />
         <Header>
           You've offset&nbsp;
-          <span style={{ color: "#2079ab", fontWeight: 700 }}>100</span>
+          <span style={{ color: "#2079ab", fontWeight: 700 }}>{totalEmissions}</span>
           &nbsp;tons of CO2 on Billow 🥳
         </Header>
       </Container>

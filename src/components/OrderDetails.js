@@ -86,6 +86,7 @@ export default function OrderDetails() {
 
   const donate = async () => {
     // Wait 3 seconds (this will eventually be a call to the Stripe API)
+    localStorage.setItem("totalEmissions", localStorage.getItem("totalEmissions") + x.money)
     setIsLoading(true);
     await delay(3000);
 
