@@ -1,21 +1,22 @@
-import './App.css';
+import React from "react";
+import { MemoryRouter as Router, Routes, Route } from "react-router-dom";
+import { createMemoryHistory } from "history";
+import "./App.css";
 import OrderDetails from "./components/OrderDetails";
+import Settings from "./components/Settings";
+import Summary from "./components/Summary";
 
 function App() {
-
-  
-
-
+  const history = createMemoryHistory();
   return (
-    <div className='App'>
-      <div className='Header'>
-        <div className='Logo'>
-          <img className="LogoIcon" src="/images/logo192.png" />
-          Billow
-        </div>
-        <img className="GearIcon" src="/images/gear-solid.svg" />
-      </div>
-      <OrderDetails />
+    <div className="App">
+      <Router history={history}>
+        <Routes>
+          <Route path="/" element={<OrderDetails />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/summary" element={<Summary />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

@@ -2,28 +2,3 @@
   margin: auto;
   text-align: center;
 }
-
-.Header {
-  background-color: #cbe7f7;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 5%;
-  margin: auto;
-}
-
-.Logo {
-  font-family: 'Avenir';
-  font-size: 24px;
-  font-weight: 500;
-  padding: 6px 0;
-}
-
-.LogoIcon {
-  width: 20px;
-  margin-right: 4px;
-  transform: translateY(2px);
-}
-
-.GearIcon {
-  width: 20px;
-}
