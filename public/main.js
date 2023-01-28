@@ -9,6 +9,28 @@ function refresh(f) {
   }
 }
 
+function parseSouthwest(content){
+
+  const parser = new DOMParser();
+  const emailHTML = parser.parseFromString(content, 'text/html');
+  console.log(content);
+  var data = $(emailHTML).find('strong:eq(4)');
+  console.log(JSON.stringify(data));
+  var info = data[0].innerHTML.split();
+  var hrs = info[0].slice(0, -1);
+  var mins = info[0].slice(0, -1);
+  console.log("me", hrs, mins);
+
+  var pounds = 1.76 * (60 * (parseFloat(hrs) + parseFloat(mins)));
+  var dollars = pounds * .2;
+
+  pounds.toFixed(2);
+  dollars.toFixed(2);
+
+  return {"company": "Southwest", "carbon": pounds.toFixed(2), "money": dollars.toFixed(2)};
+
+}
+
 
 function parseUber(content){
 
@@ -35,6 +57,7 @@ function parseUber(content){
 
 var comapnies = {
   "noreply@uber.com": parseUber,
+  "southwestairlines@ifly.southwest.com": parseSouthwest,
 }
 
 var main = function(){
@@ -65,14 +88,15 @@ var main = function(){
     var sender = data.from_email;
     var content  = data.content_html;
     
-    //console.log(sender);
-    var vals = parseUber(content);
+    console.log(sender);
+    if (sender in comapnies){
+      var vals = comapnies[sender](content);
 
-    console.log(vals);
-
+      console.log(vals);
     
-    chrome.runtime.sendMessage("nmhihkkcifbhmjinkliiocgdnlilnccm", {action: "set", id: id, data: vals});
-
+      chrome.runtime.sendMessage("nmhihkkcifbhmjinkliiocgdnlilnccm", {action: "set", id: id, data: vals});
+    }
+    
 
   });
 }

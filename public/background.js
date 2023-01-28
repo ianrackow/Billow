@@ -9,6 +9,7 @@ chrome.runtime.onMessageExternal.addListener(
             console.log("clear");
         } else {
             chrome.storage.local.get({emailIds: []}, function (result) {
+                console.log("ids", JSON.stringify(result));
                 var emailIds = result.emailIds;
         
                 if (!emailIds.includes(request.id)){
