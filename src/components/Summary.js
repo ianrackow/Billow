@@ -30,7 +30,7 @@ export default function Summary() {
         <Header>
           You've offset&nbsp;
           <span style={{ color: "#2079ab", fontWeight: 700 }}>{totalEmissions}</span>
-          &nbsp;tons of CO2 on Billow 🥳
+          &nbsp;pounds of CO2 on Billow 🥳
         </Header>
       </Container>
     </>
