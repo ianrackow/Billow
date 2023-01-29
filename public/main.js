@@ -13,13 +13,10 @@ function parseSouthwest(content){
 
   const parser = new DOMParser();
   const emailHTML = parser.parseFromString(content, 'text/html');
-  console.log(content);
   var data = $(emailHTML).find('strong:eq(4)');
-  console.log(JSON.stringify(data));
   var info = data[0].innerHTML.split();
   var hrs = info[0].slice(0, -1);
   var mins = info[0].slice(0, -1);
-  console.log("me", hrs, mins);
 
   var pounds = 1.76 * (60 * (parseFloat(hrs) + parseFloat(mins)));
   var dollars = pounds * .2;
@@ -28,7 +25,6 @@ function parseSouthwest(content){
   dollars.toFixed(2);
 
   return {"company": "Southwest", "carbon": pounds.toFixed(2), "money": dollars.toFixed(2)};
-
 }
 
 
@@ -40,8 +36,6 @@ function parseUber(content){
   var data = [...emailHTML.querySelectorAll('td')].find(({textContent:t}) => 
              t.includes("miles")
            );
-
-  //console.log(data.innerHTML);
 
   var data = $(emailHTML).find('td:contains("miles"):last');
   var info = data[0].innerHTML.split()[0];
@@ -63,41 +57,27 @@ var comapnies = {
 var main = function(){
 
   gmail = new Gmail();
-  console.log('Hello,', gmail.get.user_email());
-
 
   window.addEventListener('hashchange', function(){
-    console.log("Current page: ", gmail.get.current_page());
-    //console.log("gi");
     if (gmail.get.current_page() !== "email"){
-      console.log("clearing");
       chrome.runtime.sendMessage("nmhihkkcifbhmjinkliiocgdnlilnccm", {action: "clear"});
     }
   });
 
   gmail.observe.on('view_email', function(obj) {
-    //console.log('individual email opened', obj);
-
     var id = gmail.new.get.email_id();
 
     var email = new gmail.dom.email(id);
     var data = email.data();
-    //console.log(data);
-
 
     var sender = data.from_email;
     var content  = data.content_html;
     
-    console.log(sender);
     if (sender in comapnies){
       var vals = comapnies[sender](content);
-
-      console.log(vals);
     
       chrome.runtime.sendMessage("nmhihkkcifbhmjinkliiocgdnlilnccm", {action: "set", id: id, data: vals});
     }
-    
-
   });
 }
 
